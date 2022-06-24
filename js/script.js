@@ -15,8 +15,12 @@ button.addEventListener('click' , function(){
         creategridelementclass(gridbox , 'azure-box');
 
         gridcontainer.append(gridbox);
+    
+    }
 
-        
+    
+    for(let b=0 ; b < 16 ; b++) {
+
         let gridboxbomb = creategridboxeasy ();
 
         let bomb = createbomb (bomblist , 1 , 16);
@@ -28,16 +32,9 @@ button.addEventListener('click' , function(){
         bomblist.push(bomb);
 
         gridcontainer.append(gridboxbomb);
-    
-    }
 
-    
-    
+   }
 
-        
-
-   
-    
 })
 
 
