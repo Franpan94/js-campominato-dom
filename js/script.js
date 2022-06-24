@@ -1,9 +1,11 @@
 let gridcontainer = document.getElementById('grid-container');
 let button = document.getElementById('button');
 let bomblist = [];
+let bomb = createbomb (bomblist , 0 , 100);
+
 
 button.addEventListener('click' , function(){
-      console.log(button);  
+      
     gridcontainer.innerHTML='';
 
     for (let i = 0 ; i < 100 ; i++) {
@@ -15,25 +17,20 @@ button.addEventListener('click' , function(){
         creategridelementclass(gridbox , 'azure-box');
 
         gridcontainer.append(gridbox);
+
+        if(i === bomb) {
+            
+            creategridelementclass(gridbox , 'red-box');
+        
+        } else {
+    
+            bomblist.push(bomb);
+        
+        }
+    
+        
     
     }
-
-    
-    for(let b=0 ; b < 16 ; b++) {
-
-        let gridboxbomb = creategridboxeasy ();
-
-        let bomb = createbomb (bomblist , 1 , 16);
-
-        gridboxbomb.innerHTML = bomb;
-
-        creategridelementclass(gridboxbomb , 'red-box');
-
-        bomblist.push(bomb);
-
-        gridcontainer.append(gridboxbomb);
-
-   }
 
 })
 
