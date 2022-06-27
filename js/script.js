@@ -1,10 +1,11 @@
 let gridcontainer = document.getElementById('grid-container');
 let button = document.getElementById('button');
 let bomblist = [];
-let bomb = createbomb (bomblist , 0 , 100);
-
+let bomb = createbomb (bomblist , 16);
+let sum = 0;
 
 button.addEventListener('click' , function(){
+
       
     gridcontainer.innerHTML='';
 
@@ -15,15 +16,34 @@ button.addEventListener('click' , function(){
         gridbox.innerHTML = i;
 
         creategridelementclass(gridbox , 'azure-box');
+        
+        gridbox.addEventListener('click' , function() {
+    
+        
+
+        console.log('Hai cliccato il numero ' + i);    
+            
+    
+         }
+    )
 
         gridcontainer.append(gridbox);
+        
 
         if(i === bomb) {
             
             creategridelementclass(gridbox , 'red-box');
+            gridbox.addEventListener('click' , function() {
         
+                console.log('Hai cliccato il numero ' + bomb + ', quindi hai perso');
+                
+                gridcontainer.innerHTML = 'Hai cliccato sulla bomba numero ' + bomb + ', perciò gioco terminato'
+        
+             }
+        )
         } else {
-    
+            
+            
             bomblist.push(bomb);
         
         }
@@ -54,11 +74,12 @@ function creategridelementclass(gridelement , gridclass) {
      gridelement.addEventListener('click' , function() {
         
         gridelement.classList.toggle(gridclass);
+       
 
      }
 )}
 
-function createbomb(list, min, max) {
+function createbomb(list, num) {
     
     let randombomb;
 
@@ -66,7 +87,7 @@ function createbomb(list, min, max) {
 
     while( control === false) {
 
-       randombomb =  Math.round(Math.random() * (max - min) + min);
+       randombomb =  Math.round(Math.random() * num);
 
         if(!list.includes(randombomb)) {
 
